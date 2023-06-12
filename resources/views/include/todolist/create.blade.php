@@ -14,9 +14,11 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Category
                         title</label>
-                    <input value="" name="title" type="text" class="form-control"
+                    <input value="" name="title" type="text"
+                           class="form-control"
                            id="title" placeholder="category title">
-                    <span id="titleError" class="text-danger error-messages"></span>
+                    <span id="titleError"
+                          class="text-danger error-messages"></span>
                 </div>
                 <div class="form-group">
                     <label
@@ -24,13 +26,14 @@
                     <textarea name="description" class="form-control"
                               id="description"
                               rows="3"></textarea>
-                    <span id="descriptionError" class="text-danger error-messages"></span>
+                    <span id="descriptionError"
+                          class="text-danger error-messages"></span>
                 </div>
                 <div class="text-danger">
                 </div>
                 <div class="row justify-content-center">
                     <button type="button" id="createListBtn"
-                        class="col-3 btn btn-primary m-3 text-center">
+                            class="col-3 btn btn-primary m-3 text-center">
                         Create
                     </button>
                 </div>
@@ -46,36 +49,37 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
-    })
 
-    const createListForm = $('#createListForm')[0]
-    $('#createListBtn').click(function () {
+        const createListForm = $('#createListForm')[0]
 
-        let form = new FormData(createListForm)
-        $('.error-messages').html('')
-        $('.create-success').html('')
+        $('#createListBtn').click(function () {
 
-        $.ajax({
-            url: '{{ route("list.store") }}',
-            method: 'POST',
-            processData: false,
-            contentType: false,
-            data: form,
+            let form = new FormData(createListForm)
+            $('.error-messages').html('')
+            $('.create-success').html('')
 
-            success: function (response) {
-                console.log(response)
-                $('.create-success').html(`
+            $.ajax({
+                url: '{{ route("list.store") }}',
+                method: 'POST',
+                processData: false,
+                contentType: false,
+                data: form,
+
+                success: function (response) {
+                    $('.create-success').html(`
                     <div class="alert alert-success ">
                         ${response.success}
                     </div>
                     `)
-            },
-            error: function (error) {
-                if (error) {
-                    $('#titleError').html(error.responseJSON.errors.title)
-                    $('#descriptionError').html(error.responseJSON.errors.description)
+                    displayData(response.data)
+                },
+                error: function (error) {
+                    if (error) {
+                        $('#titleError').html(error.responseJSON.errors.title)
+                        $('#descriptionError').html(error.responseJSON.errors.description)
+                    }
                 }
-            }
+            })
         })
     })
 </script>

@@ -12,9 +12,10 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         $data['admin_id'] = auth()->user()->id;
-        ToDoList::Create($data);
+        $list = ToDoList::Create($data);
         return response()->json([
-            'success' => 'ToDoList created successfully'
+            'success' => 'ToDoList created successfully',
+            'data' => $list
         ], 201);
     }
 }

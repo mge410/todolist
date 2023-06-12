@@ -22,6 +22,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::group(['prefix' => 'main', 'middleware' => ['auth']], function () {
     Route::get('/', App\Http\Controllers\Main\IndexController::class)->name('list.index');
     Route::post('/store', App\Http\Controllers\Main\StoreController::class)->name('list.store');
+    Route::delete('/destroy/{id}', App\Http\Controllers\Main\DestroyController::class)->name('list.destroy');
 });
 
 Auth::routes();
