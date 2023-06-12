@@ -7,7 +7,7 @@
                 <li class="nav-item">
                     <button class="btn btn-success" type="button"
                             data-bs-toggle="modal"
-                            data-bs-target="#exampleModalEdit">Create new
+                            data-bs-target="#exampleModalCreate">Create new
                         todolist
                     </button>
                     @include('include.todolist.create')
@@ -18,15 +18,18 @@
             @foreach($toDoList as $list)
                 <div class="card m-1" id="card-{{ $list->id }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $list->title }}</h5>
-                        <p class="card-text">{{ $list->description }}</p>
+                        <h5 class="card-title" id="titleContent-{{$list->id}}">{{ $list->title }}</h5>
+                        <p class="card-text" id="descriptionContent-{{$list->id}}">{{ $list->description }}</p>
                         <p class="card-text"><small class="text-muted">The last
-                                task
-                                was <span
-                                    class="text-danger-emphasis">3 mins ago</span></small>
+                                task was <span class="text-danger-emphasis">3 mins ago</span></small>
                         </p>
-                        <i class="bi link bi-pencil-fill text-primary m-1"
-                           type="button"></i>
+                        <a data-bs-toggle="modal"
+                           data-bs-target="#exampleModalEdit-{{$list->id}}">
+                            <i class="bi link bi-pencil-fill text-primary m-1"
+                               id="delete-list"></i>
+                        </a>
+                        @include('include.todolist.edit')
+
                         <a class="btn-delete-post"
                            data-route="{{ route('list.destroy', $list->id) }}"
                            data-id="{{ $list->id }}">
@@ -52,7 +55,7 @@
                         id: $(this).data('id'),
                     },
                     success: function (data) {
-                        alert('Post successfully deleted!')
+                        alert('List successfully deleted!')
                         $(`#card-${cardId}`).remove()
                     },
                     error: function (xhr, textStatus, errorThrown) {

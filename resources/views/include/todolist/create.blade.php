@@ -1,12 +1,12 @@
 <div class="modal fade bd-example-modal-lg"
-     id="exampleModalEdit" tabindex="-1" role="dialog"
+     id="exampleModalCreate" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="create-success">
 
         </div>
         <div class="modal-content">
-            <h2 class="text-center mt-2">Edit category</h2>
+            <h2 class="text-center mt-2">Create category</h2>
             <form class="m-5" method="POST"
                   id="createListForm">
                 @csrf
@@ -43,6 +43,8 @@
 </div>
 
 <script type="module">
+    import displayData from "{{ asset('js/load-card.js') }}";
+
     $(document).ready(function () {
         $.ajaxSetup({
             headers: {
