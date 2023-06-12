@@ -1,5 +1,5 @@
 <div class="modal fade bd-example-modal-lg"
-     id="exampleModalCreate" tabindex="-1" role="dialog"
+     id="exampleModalTaskCreate" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="create-success">
@@ -8,7 +8,7 @@
         <div class="modal-content">
             <h2 class="text-center mt-2">Create category</h2>
             <form class="m-5" method="POST"
-                  id="createListForm">
+                  id="createTaskForm">
                 @csrf
                 @method('POST')
                 <div class="form-group">
@@ -32,7 +32,7 @@
                 <div class="text-danger">
                 </div>
                 <div class="row justify-content-center">
-                    <button type="button" id="createListBtn"
+                    <button type="button" id="createTaskBtn"
                             class="col-3 btn btn-primary m-3 text-center">
                         Create
                     </button>
@@ -52,16 +52,16 @@
             }
         })
 
-        const createListForm = $('#createListForm')[0]
+        const createTaskForm = $('#createTaskForm')[0]
 
-        $('#createListBtn').click(function () {
+        $('#createTaskBtn').click(function () {
 
-            let form = new FormData(createListForm)
+            let form = new FormData(createTaskForm)
             $('.error-messages').html('')
             $('.create-success').html('')
 
             $.ajax({
-                url: '{{ route("list.store") }}',
+                url: '{{ route("task.store", $list->id) }}',
                 method: 'POST',
                 processData: false,
                 contentType: false,

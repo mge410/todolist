@@ -11,7 +11,7 @@ function displayData(data) {
                            data-bs-target="#exampleModalEdit-${data.id}">
                             <i class="bi link bi-pencil-fill text-primary m-1"
                                id="delete-list"></i>
-                        </a>                <a class="btn-delete-post" data-route="main/destroy/${data.id}" data-id="${data.id}">
+                        </a>                <a class="btn-delete-list" data-route="main/destroy/${data.id}" data-id="${data.id}">
                     <i class="bi link bi-trash-fill text-danger m-1" id="delete-list"></i>
                 </a>
             </div>

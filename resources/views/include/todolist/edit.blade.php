@@ -42,7 +42,7 @@
 </div>
 
 <script type="module">
-    import editList from "{{ asset('js/edit-list.js') }}";
+    import editList from "{{ asset('js/main/edit-list.js') }}";
 
     $(document).ready(function () {
         $.ajaxSetup({

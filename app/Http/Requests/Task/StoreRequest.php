@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Main;
+namespace App\Http\Requests\Task;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class DestroyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer'
+            'title' => 'required',
+            'description' => 'required'
         ];
     }
 }

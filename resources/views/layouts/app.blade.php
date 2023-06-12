@@ -76,8 +76,8 @@
             @yield('content')
         </main>
     </div>
-    <script type="module" src="{{ asset('js/load-card.js') }}"></script>
-    <script type="module" src="{{ asset('js/edit-list.js') }}"></script>
+    <script type="module" src="{{ asset('js/main/load-card.js') }}"></script>
+    <script type="module" src="{{ asset('js/main/edit-list.js') }}"></script>
 </body>
 </html>
 
