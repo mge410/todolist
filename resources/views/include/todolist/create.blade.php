@@ -43,7 +43,7 @@
 </div>
 
 <script type="module">
-    import displayData from "{{ asset('js/load-card.js') }}";
+    import displayData from "{{ asset('js/main/load-card.js') }}";
 
     $(document).ready(function () {
         $.ajaxSetup({

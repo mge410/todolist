@@ -18,8 +18,8 @@
             @foreach($toDoList as $list)
                 <div class="card m-1" id="card-{{ $list->id }}">
                     <div class="card-body">
-                        <h5 class="card-title" id="titleContent-{{$list->id}}">{{ $list->title }}</h5>
-                        <p class="card-text" id="descriptionContent-{{$list->id}}">{{ $list->description }}</p>
+                        <a class="link link-underline link-underline-opacity-0" href=" {{ route('task.index', $list->id) }} "><h5 class="card-title" id="titleContent-{{$list->id}}">{{ $list->title }}</h5></a>
+                        <a class="link-dark link-underline link-underline-opacity-0" href=" {{ route('task.index', $list->id) }} "><p class="card-text" id="descriptionContent-{{$list->id}}">{{ $list->description }}</p></a>
                         <p class="card-text"><small class="text-muted">The last
                                 task was <span class="text-danger-emphasis">3 mins ago</span></small>
                         </p>
@@ -30,7 +30,7 @@
                         </a>
                         @include('include.todolist.edit')
 
-                        <a class="btn-delete-post"
+                        <a class="btn-delete-list"
                            data-route="{{ route('list.destroy', $list->id) }}"
                            data-id="{{ $list->id }}">
                             <i class="bi link bi-trash-fill text-danger m-1"
@@ -44,7 +44,7 @@
     <script type="module">
         $(document).ready(function () {
 
-            $(document).on('click', '.btn-delete-post', function () {
+            $(document).on('click', '.btn-delete-list', function () {
                 let cardId = $(this).data('id')
                 $.ajax({
                     method: 'DELETE',
