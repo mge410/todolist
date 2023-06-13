@@ -10,4 +10,9 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'list_id'];
+
+    public function image()
+    {
+        return $this->hasOne(Image::class);
+    }
 }

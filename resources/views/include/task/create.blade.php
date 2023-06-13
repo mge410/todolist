@@ -8,7 +8,7 @@
         <div class="modal-content">
             <h2 class="text-center mt-2">Create category</h2>
             <form class="m-5" method="POST"
-                  id="createTaskForm">
+                  id="createTaskForm" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="form-group">
@@ -29,8 +29,20 @@
                     <span id="descriptionError"
                           class="text-danger error-messages"></span>
                 </div>
-                <div class="text-danger">
+
+                <div class="form-group">
+                    <label for="exampleInputFile">Task image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile"
+                                   name="image">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                    </div>
+                    <span id="imageError"
+                          class="text-danger error-messages"></span>
                 </div>
+
                 <div class="row justify-content-center">
                     <button type="button" id="createTaskBtn"
                             class="col-3 btn btn-primary m-3 text-center">
@@ -79,6 +91,7 @@
                     if (error) {
                         $('#titleError').html(error.responseJSON.errors.title)
                         $('#descriptionError').html(error.responseJSON.errors.description)
+                        $('#imageError').html(error.responseJSON.errors.image)
                     }
                 }
             })
