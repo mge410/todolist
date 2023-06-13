@@ -28,6 +28,7 @@ Route::group(['prefix' => 'main', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => '{list_id}/task'], function () {
         Route::get('/', App\Http\Controllers\Task\IndexController::class)->name('task.index');
         Route::post('/store', App\Http\Controllers\Task\StoreController::class)->name('task.store');
+        Route::patch('/update/{task_id}', App\Http\Controllers\Task\UpdateController::class)->name('task.update');
         Route::delete('/destroy/{task_id}', App\Http\Controllers\Task\DestroyController::class)->name('task.destroy');
     });
 });
