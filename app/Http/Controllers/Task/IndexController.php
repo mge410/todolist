@@ -12,7 +12,7 @@ class IndexController extends Controller
     {
         $list = ToDoList::find($listId);
         $tasks = Task::where('list_id', '=', $list->id)
-            ->get(['id', 'title', 'description']);
+            ->get(['id', 'title', 'description', 'list_id']);
         return view('task.index',
             compact('list', 'tasks'));
     }
