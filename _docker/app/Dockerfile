@@ -14,6 +14,15 @@ RUN apt-get update && apt-get install -y \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get update \
+ && apt-get install --assume-yes --no-install-recommends --quiet \
+    build-essential \
+    libmagickwand-dev \
+ && apt-get clean all
+
+RUN pecl install imagick \
+ && docker-php-ext-enable imagick
+
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
 # Install composer
