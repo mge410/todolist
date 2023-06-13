@@ -14,7 +14,7 @@ class UpdateController extends Controller
         $list = ToDoList::find($listID);
         $list->update($data);
         return response()->json([
-            'data' => $data,
+            'data' => $list,
             'success' => 'ToDoList changed successfully',
         ]);
     }

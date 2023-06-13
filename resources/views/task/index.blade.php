@@ -19,30 +19,11 @@
         </nav>
         <div class="card-deck">
             @foreach($tasks as $task)
-                <div class="card m-1" id="card-{{ $task->id }}">
-                    <div class="card-body">
-                        <a class="link link-underline link-underline-opacity-0"
-                           href=" {{ route('task.index', $list->id) }} "><h5
-                                class="card-title"
-                                id="titleContent-{{$list->id}}">{{ $task->title }}</h5>
-                        </a>
-                        <a class="link-dark link-underline link-underline-opacity-0"
-                           href=" {{ route('task.index', $list->id) }} "><p
-                                class="card-text"
-                                id="descriptionContent-{{$list->id}}">{{ $task->description }}</p>
-                        </a>
-                        <p class="card-text"><small class="text-muted">The last
-                                task was <span class="text-danger-emphasis">3 mins ago</span></small>
-                        </p>
+                <script type="module">
+                    import displayData from "{{ asset('js/task/load-card.js') }}";
 
-                        <a class="btn-delete-task"
-                           data-route="{{ route('task.destroy', ['list_id' => $list->id, 'task_id' =>  $task->id]) }}"
-                           data-id="{{ $task->id }}">
-                            <i class="bi link bi-trash-fill text-danger m-1"
-                               id="delete-list"></i>
-                        </a>
-                    </div>
-                </div>
+                    displayData(JSON.parse(JSON.stringify(@json($task))))
+                </script>
             @endforeach
         </div>
     </div>
