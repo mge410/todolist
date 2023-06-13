@@ -45,9 +45,14 @@ class Service
                 ->fit(150, 150)
                 ->save(storage_path('app/public/images/task/' . $task->list_id . '/' .
                     $preview_image_name));
-
             DB::commit();
-            return $task;
+
+            return Task::where('id', '=', $task->id)
+                ->select('id', 'title', 'description', 'list_id')
+                ->with(['image' => function ($query) {
+                    $query->select('id', 'url', 'preview_url', 'task_id');
+                }])->first();
+
         } catch (\Exception $exception) {
             DB::rollBack();
             return $exception->getMessage();

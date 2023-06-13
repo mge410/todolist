@@ -1,13 +1,16 @@
 import editList from "./edit-list.js";
 
 function displayData(data) {
+    console.log(data)
     const cardContent = `
         <div class="card m-1 card-item" id="card-${data.id}" data-id="${data.id}">
             <div class="card-body">
                 <div class="row">
+                <div>
                 <a class="m-1" href="${data.image.url}">
-                       <img src="${data.image.preview_url}" alt="..." class="img-thumbnail">
+                     <img src="${data.image.preview_url}" alt="..." class="img-thumbnail">
                 </a>
+                </div>
                 <div>
                 <h5 class="card-title mt-3" id="titleContent-${data.id}">${data.title}</h5>
                     <p class="card-text" id="descriptionContent-${data.id}">${data.description}</p>
