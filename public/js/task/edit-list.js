@@ -1,7 +1,8 @@
 function editList(listId, url) {
-    const editListForm = $(`#editListForm-${listId}`)[0]
+    const editTaskForm = $(`#editTaskForm-${listId}`)[0]
 
-    let form = new FormData(editListForm)
+    let form = new FormData(editTaskForm)
+
     $('.error-messages-edit').html('')
     $('.edit-success').html('')
 
@@ -20,10 +21,11 @@ function editList(listId, url) {
                     `)
             $(`#titleContent-${listId}`).html(`${response.data.title}`)
             $(`#descriptionContent-${listId}`).html(`${response.data.description}`)
+            $(`#taskImg-${listId}`).attr('src', `${response.data.image.preview_url}`)
+            $(`#taskImgLink-${listId}`).attr('href', `${response.data.image.url}`)
         },
         error: function (error) {
             if (error) {
-                console.log(error)
                 $(`#titleErrorEdit-${listId}`).html(error.responseJSON.errors.title)
                 $(`#descriptionError-${listId}`).html(error.responseJSON.errors.description)
             }

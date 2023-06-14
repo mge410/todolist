@@ -6,17 +6,17 @@
 
         </div>
         <div class="modal-content">
-            <h2 class="text-center mt-2">Create category</h2>
+            <h2 class="text-center mt-2">Create</h2>
             <form class="m-5" method="POST"
                   id="createListForm">
                 @csrf
                 @method('POST')
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Category
+                    <label for="exampleFormControlInput1">
                         title</label>
                     <input value="" name="title" type="text"
                            class="form-control"
-                           id="title" placeholder="category title">
+                           id="title" placeholder="title">
                     <span id="titleError"
                           class="text-danger error-messages"></span>
                 </div>
