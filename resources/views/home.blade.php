@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Congratulations, you are logged in!') }}
+                    <p>You can start creating personal lists.
+                        <a href="{{ route('list.index') }}">Start</a>
+                    </p>
                 </div>
             </div>
         </div>

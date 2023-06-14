@@ -18,7 +18,7 @@ class StoreController extends Controller
         $task->tags()->attach($tag);
 
         return response()->json([
-            'success' => 'ToDoList created successfully',
+            'success' => 'Tag created successfully',
             'data' => $tag,
             'listId' => $listId,
             'taskId' => $taskId,
