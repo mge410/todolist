@@ -16,7 +16,7 @@ class UpdateController extends BaseController
 
         return response()->json([
             'data' => $task,
-            'success' => 'ToDoList changed successfully',
+            'success' => 'Task changed successfully',
         ]);
     }
 }
