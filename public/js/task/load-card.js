@@ -5,9 +5,11 @@ function displayData(data) {
         <div class="card m-1 card-item" id="card-${data.id}" data-id="${data.id}">
             <div class="card-body">
                 <div class="row">
-                <a class="m-1" href="${data.image.url}">
-                       <img src="${data.image.preview_url}" alt="..." class="img-thumbnail">
+                <div>
+                <a class="m-1" id="taskImgLink-${data.id}" href="${data.image.url}">
+                     <img id="taskImg-${data.id}" src="${data.image.preview_url}" alt="..." class="img-thumbnail">
                 </a>
+                </div>
                 <div>
                 <h5 class="card-title mt-3" id="titleContent-${data.id}">${data.title}</h5>
                     <p class="card-text" id="descriptionContent-${data.id}">${data.description}</p>
@@ -33,9 +35,10 @@ function displayData(data) {
 
         </div>
         <div class="modal-content">
-            <h2 class="text-center mt-2">Edit category</h2>
+            <h2 class="text-center mt-2">Edit</h2>
             <form class="m-5" method="POST"
-                  id="editListForm-${data.id}">
+                  id="editTaskForm-${data.id}"
+                  enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Category
@@ -55,7 +58,17 @@ function displayData(data) {
                     <span id="descriptionError-${data.id}"
                           class="text-danger error-messages-edit"></span>
                 </div>
-                <div class="text-danger">
+                <div class="form-group">
+                    <label for="exampleInputFile">Task image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile"
+                                   name="image">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                    </div>
+                    <span id="imageError"
+                          class="text-danger error-messages"></span>
                 </div>
                 <div class="row justify-content-center">
                     <button type="button" id="editListBtn-${data.id}"
