@@ -21,11 +21,11 @@ return new class extends Migration {
 
             $table->foreign('task_id', 'task_tag_task_fk')
                 ->on('tasks')
-                ->references('id');
+                ->references('id')
+                ->cascadeOnDelete();
             $table->foreign('tag_id', 'task_tag_tag_fk')
                 ->on('tags')
-                ->references('id');
-
+                ->references('id')->cascadeOnDelete();
 
             $table->timestamps();
         });
