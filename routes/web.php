@@ -32,6 +32,11 @@ Route::group(['prefix' => 'main', 'middleware' => 'auth'], function () {
             Route::post('/store', App\Http\Controllers\Task\StoreController::class)->name('task.store');
             Route::patch('/update/{task_id}', App\Http\Controllers\Task\UpdateController::class)->name('task.update');
             Route::delete('/destroy/{task_id}', App\Http\Controllers\Task\DestroyController::class)->name('task.destroy');
+
+            Route::group(['prefix' => '{task_id}/tag'], function () {
+                Route::post('/store', App\Http\Controllers\Tag\StoreController::class)->name('tag.store');
+                Route::delete('/destroy/{tag_id}', App\Http\Controllers\Tag\DestroyController::class)->name('tag.destroy');
+            });
         });
     });
 });

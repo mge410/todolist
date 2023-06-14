@@ -50,6 +50,27 @@
                     }
                 });
             });
+
+            $(document).on('click', '.btn-delete-tag', function () {
+                let tagId = $(this).data('id')
+                $.ajax({
+                    method: 'DELETE',
+                    url: $(this).data('route'),
+                    type: 'DELETE',
+                    dataType: 'json',
+                    data: {
+                        id: $(this).data('id'),
+                    },
+                    success: function (data) {
+                        alert('List successfully deleted!')
+                        $(`#tag-${tagId}`).remove()
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log(xhr)
+                        alert('An error occurred while deleting the entry.');
+                    }
+                });
+            });
         });
     </script>
 @endsection

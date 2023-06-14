@@ -15,4 +15,9 @@ class Task extends Model
     {
         return $this->hasOne(Image::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'tag_tasks', 'task_id', 'tag_id');
+    }
 }

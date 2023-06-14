@@ -37,6 +37,8 @@ class Service
                 ->select('id', 'title', 'description', 'list_id')
                 ->with(['image' => function ($query) {
                     $query->select('id', 'url', 'preview_url', 'task_id');
+                }])->with(['tags' => function ($query) {
+                    $query->select('tags.id', 'tags.title');
                 }])->first();
 
         } catch (\Exception $exception) {
@@ -73,6 +75,8 @@ class Service
                 ->select('id', 'title', 'description', 'list_id')
                 ->with(['image' => function ($query) {
                     $query->select('id', 'url', 'preview_url', 'task_id');
+                }])->with(['tags' => function ($query) {
+                    $query->select('tags.id', 'tags.title');
                 }])->first();
 
         } catch (\Exception $exception){
