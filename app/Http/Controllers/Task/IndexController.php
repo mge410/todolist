@@ -10,10 +10,13 @@ class IndexController extends Controller
 {
     public function __invoke(int $listId)
     {
-        $list = ToDoList::find($listId );
+        $list = ToDoList::find($listId);
         $tasks = Task::select('id', 'title', 'description', 'list_id')
             ->with(['image' => function ($query) {
                 $query->select('id', 'url', 'preview_url', 'task_id');
+            }])->with(['tags' => function ($query) {
+                $query
+                    ->select('tags.id', 'tags.title');
             }])
             ->where('list_id', '=', $list->id)
             ->get();
