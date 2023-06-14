@@ -17,6 +17,7 @@ class AdminTaskMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $list = ToDoList::find($request->route('list_id'));
+//        dd($request->route());
         if ($list->admin_id == $request->user()->id)
         {
             return $next($request);
