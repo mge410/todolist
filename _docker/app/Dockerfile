@@ -31,4 +31,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
 
+RUN mkdir -p /var/www/storage/logs && \
+    touch /var/www/storage/logs/laravel.log && \
+    chown -R www-data:www-data /var/www/storage && \
+    chown -R www-data:www-data /var/www/storage/logs && \
+    chmod -R 775 /var/www/storage/logs
+
 WORKDIR /var/www
