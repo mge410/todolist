@@ -14,14 +14,24 @@ RUN apt-get update && apt-get install -y \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get update \
- && apt-get install --assume-yes --no-install-recommends --quiet \
-    build-essential \
-    libmagickwand-dev \
- && apt-get clean all
+RUN apt-get update && \
+    apt-get install -y \
+        libmagickwand-dev \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pecl install imagick \
- && docker-php-ext-enable imagick
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get install -y build-essential && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get update && apt-get install -y npm
+
+RUN pecl install imagick && docker-php-ext-enable imagick
 
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
