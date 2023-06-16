@@ -21,15 +21,15 @@
 | **8** Подгружаем миграции : <br>```php artisan migrate  ```                                                                                                                               |
 | **9** Создаём storage link : <br>```php artisan storage:link  ```                                                                                                                         |
 
-| **Запуск без Docker**                                                                                 |
-|-------------------------------------------------------------------------------------------------------|
-| **1** Подгружаем зависимости composer: <br>```composer install --no-dev```                            |
+| **Запуск без Docker**                                                                                  |
+|--------------------------------------------------------------------------------------------------------|
+| **1** Подгружаем зависимости composer: <br>```composer install --no-dev```                             |
 | **2** Подгружаем зависимости npm и запускаем build: <br>```npm install ```   <br>```npm run build  ``` |
-| **3** Копируем env файл: <br>  ```cp -r .env.example .env```                                          |
-| **4** Генерируем ключ для нашего приложения :  <br> ```php artisan key:gen```                         |
-| **5** Запускаем миграции    <br>```php artisan migrate```                                             |
-| **6** Запускаем сервер : <br>  ```php artisan storage:link```                                         |
-| **7** Создаём storage link : <br>  ```php artisan serve```                                            |
+| **3** Копируем env файл: <br>  ```cp -r .env.example .env```                                           |
+| **4** Генерируем ключ для нашего приложения :  <br> ```php artisan key:gen```                          |
+| **5** Запускаем миграции    <br>```php artisan migrate```                                              |
+| **6** Запускаем сервер : <br>  ```php artisan storage:link```                                          |
+| **7** Создаём storage link : <br>  ```php artisan serve```                                             |
 
 После проект будет доступен тут ```http://127.0.0.1:8000/```
 
